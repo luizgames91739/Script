@@ -1,55 +1,81 @@
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local humanoid = character:WaitForChild("Humanoid")
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
-local screenGui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
-screenGui.Name = "SpeedHub"
+local Window = Rayfield:CreateWindow({
+   Name = "🦈 Project Leviathan",
+   LoadingTitle = "🦈 Project Leviathan",
+   LoadingSubtitle = "by Leviathan Team",
+   ConfigurationSaving = {
+      Enabled = false
+   },
+   Discord = {
+      Enabled = false
+   },
+   KeySystem = false
+})
 
-local imageFrame = Instance.new("ImageLabel", screenGui)
-imageFrame.Size = UDim2.new(0, 220, 0, 120)
-imageFrame.Position = UDim2.new(0, 20, 0, 20)
-imageFrame.BackgroundTransparency = 1
-imageFrame.Image = "rbxassetid://6071575925"
-imageFrame.ScaleType = Enum.ScaleType.Stretch
+-- 🦈 Hub Information Tab
+local InfoTab = Window:CreateTab("🦈 Hub Information", 4483362458)
 
-local speedLabel = Instance.new("TextLabel", imageFrame)
-speedLabel.Size = UDim2.new(1, 0, 0.3, 0)
-speedLabel.Position = UDim2.new(0, 0, 0, 0)
-speedLabel.BackgroundTransparency = 1
-speedLabel.TextColor3 = Color3.new(1, 1, 1)
-speedLabel.TextScaled = true
-speedLabel.Font = Enum.Font.GothamBold
-speedLabel.Text = "Velocidade: 16"
+InfoTab:CreateParagraph({
+   Title = "🦈 Day Of Creation",
+   Content = "30/07/25"
+})
 
-local plusButton = Instance.new("TextButton", imageFrame)
-plusButton.Size = UDim2.new(0.5, -5, 0.5, -10)
-plusButton.Position = UDim2.new(0, 5, 0.5, 5)
-plusButton.BackgroundColor3 = Color3.fromRGB(0, 200, 0)
-plusButton.TextColor3 = Color3.new(1, 1, 1)
-plusButton.Font = Enum.Font.GothamBold
-plusButton.TextScaled = true
-plusButton.Text = "+1"
+InfoTab:CreateParagraph({
+   Title = "🦈 Hub Version",
+   Content = "version : Alpha 1.10.0"
+})
 
-local minusButton = Instance.new("TextButton", imageFrame)
-minusButton.Size = UDim2.new(0.5, -5, 0.5, -10)
-minusButton.Position = UDim2.new(0.5, 0, 0.5, 5)
-minusButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
-minusButton.TextColor3 = Color3.new(1, 1, 1)
-minusButton.Font = Enum.Font.GothamBold
-minusButton.TextScaled = true
-minusButton.Text = "-1"
+InfoTab:CreateParagraph({
+   Title = "🦈 Hub-Compatible Maps",
+   Content = "All Maps"
+})
 
-local speed = 16
-humanoid.WalkSpeed = speed
+-- 🦈 Leviathan-Scripts Executer Tab
+local ScriptTab = Window:CreateTab("🦈 Leviathan-Scripts Executer", 4483362458)
 
-plusButton.MouseButton1Click:Connect(function()
-	speed += 1
-	humanoid.WalkSpeed = speed
-	speedLabel.Text = "Velocidade: " .. speed
-end)
+ScriptTab:CreateButton({
+   Name = "🦈 Redz Hub",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/tlredz/Scripts/refs/heads/main/main.luau"))()
+   end,
+})
 
-minusButton.MouseButton1Click:Connect(function()
-	speed = math.max(0, speed - 1)
-	humanoid.WalkSpeed = speed
-	speedLabel.Text = "Velocidade: " .. speed
-end)
+ScriptTab:CreateButton({
+   Name = "🦈 Infinity Yield",
+   Callback = function()
+      loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+   end,
+})
+
+ScriptTab:CreateButton({
+   Name = "🦈 Dinga Hub",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/Dingarik/Dingarik/refs/heads/main/GrowAGarden"))()
+   end,
+})
+
+ScriptTab:CreateButton({
+   Name = "🦈 No-Lag Hub",
+   Callback = function()
+      repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+
+      local scripts = {
+         [126884695634066] = "https://raw.githubusercontent.com/NoLag-id/No-Lag-HUB/refs/heads/main/Garden/Garden-V1.lua",
+         [81440632616906] = "https://raw.githubusercontent.com/NoLag-id/No-Lag-HUB/refs/heads/main/DigEarth/V1.lua",
+      }
+
+      local url = scripts[game.PlaceId]
+      if url then
+         loadstring(game:HttpGetAsync(url))()
+         loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/NoLag-id/No-Lag-HUB/refs/heads/main/untitled.lua"))()
+      end
+   end,
+})
+
+ScriptTab:CreateButton({
+   Name = "🦈 Chilli Hub",
+   Callback = function()
+      loadstring(game:HttpGet("https://rawscripts.net/raw/Steal-a-Brainrot-KEYLESS-TRUE-THE-BEST-STEAL-A-BRAINROT-SCRIPT-45137"))()
+   end,
+})
